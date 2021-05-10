@@ -30,7 +30,6 @@ def signUp(request):
             return HttpResponseRedirect('/')
         except:
             messages.error(request, "Username already exists")
-            return render(request, "index.html")
     return render(request, "signup.html", )
 
 
