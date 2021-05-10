@@ -55,7 +55,7 @@ ROOT_URLCONF = 'covissentials.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['/mainApp/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

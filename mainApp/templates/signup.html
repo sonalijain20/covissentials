@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	{% for i in messages %}
+							{{i}}
+							{% endfor %}
+    <a href="/">Home</a><br><br>
+    <form action="/signup/" method="post">
+        {% csrf_token %}
+        <label>Name</label><br>
+        <input type="text" name="name"><br>
+        <label>Username</label><br>
+        <input type="text" name="uname"><br>
+        <label>Email Address</label><br>
+        <input type="email" name="email"><br>
+        <label>Contact no.</label><br>
+        <input type="number" name="contact"><br>
+        <label>Area</label><br>
+        <input type="text" name="area"><br>
+        <label>Pincode</label><br>
+        <input type="number" name="pin"><br>
+        <label>City</label><br>
+        <input type="text" name="city"><br>
+        <label>State</label><br>
+        <input type="text" name="state"><br>
+        <label>Password</label><br>
+        <input type="password" name="pass"><br>
+        <input type="submit" value="SIGN UP"><br>
+    </form>
+</body>
+</html>

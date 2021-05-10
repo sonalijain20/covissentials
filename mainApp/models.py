@@ -2,13 +2,12 @@ from django.db import models
 
 # Create your models here.
 
-class User(models.Model):
+class Provider(models.Model):
     name = models.CharField(max_length=20)
     uname = models.CharField(max_length=20)
     email = models.EmailField()
     phone = models.CharField(max_length=20, default=None, null=True, blank=True)
-    address = models.CharField(max_length=20, default=None, null=True, blank=True)
-    landmark = models.CharField(max_length=20, default=None, null=True, blank=True)
+    area = models.CharField(max_length=20, default=None, null=True, blank=True)
     city = models.CharField(max_length=20, default=None, null=True, blank=True)
     state = models.CharField(max_length=20, default=None, null=True, blank=True)
     pin = models.CharField(max_length=20, default=None, null=True, blank=True)
