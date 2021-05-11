@@ -61,6 +61,17 @@ def profile(request):
     else:
         try:
             p =Provider.objects.get(uname=request.user)
-            return render(request, "profile.html")
+            if (request.method == "POST"):
+                p.name = request.POST.get('name')
+                p.uname = request.POST.get('uname')
+                p.email = request.POST.get('email')
+                p.phone = request.POST.get('phone')
+                p.area = request.POST.get('area')
+                p.city = request.POST.get('city')
+                p.pin = request.POST.get('pin')
+                p.state = request.POST.get('state')
+                p.save()
+                return HttpResponseRedirect('/profile/')
+            return render(request, "profile.html", {"Provider":p})
         except:
             return render(request, "profile.html")

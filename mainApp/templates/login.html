@@ -4,16 +4,46 @@
 	{% for i in messages %}
     {{i}}
     {% endfor %}
-<div>
-    <form action="/signin/" method="post">
-            {% csrf_token %}
-            <label>Username</label><br>
-            <input type="text" name="uname" required=""><br>
-            <label>Password</label><br>
-            <input type="password" name="password" required=""><br><br>
-            <input type="submit" value="Sign In"><br>
-        </form>
-<p>Don't have an account?</p><a href="/signup/">Sign up</a>
-</div>
+<!--<div>-->
+<!--    <form action="/signin/" method="post">-->
+<!--            {% csrf_token %}-->
+<!--            <label>Username</label><br>-->
+<!--            <input type="text" name="uname" required=""><br>-->
+<!--            <label>Password</label><br>-->
+<!--            <input type="password" name="password" required=""><br><br>-->
+<!--            <input type="submit" value="Sign In"><br>-->
+<!--        </form>-->
+<!--<p>Don't have an account?</p><a href="/signup/">Sign up</a>-->
+<!--</div>-->
 
+
+<div class="wrapper">
+<!--         <div class="title">-->
+<!--            Sign In-->
+<!--         </div>-->
+         <form action="/signin/" method="post">
+             {% csrf_token %}
+            <div class="field">
+               <input type="text" required name="uname">
+               <label>Email Address</label>
+            </div>
+            <div class="field">
+               <input type="password" required name="password">
+               <label>Password</label>
+            </div>
+<!--            <div class="content">-->
+<!--&lt;!&ndash;               <div class="checkbox">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <input type="checkbox" id="remember-me">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <label for="remember-me">Remember me</label>&ndash;&gt;-->
+<!--&lt;!&ndash;               </div>&ndash;&gt;-->
+
+<!--            </div>-->
+            <div class="field">
+               <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">
+               Not a member? <a href="/signup/">Signup now</a>
+            </div>
+         </form>
+      </div>
 {% endblock %}

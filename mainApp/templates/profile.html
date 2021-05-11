@@ -1,7 +1,30 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block body %}
-<h3>hellooooooooooooooooo</h3>
+<div class="wrapper">
+    <h3>Welcome {{Provider.name}}</h3>
+<form method="post">
+    {% csrf_token %}
+    <label>Name</label>
+    <input type="text" value="{{Provider.name}}" name="name"><br>
+    <label>Username</label>
+    <input type="text" value="{{Provider.uname}}" name="uname"><br>
+    <label>Email Address</label>
+    <input type="email" value="{{Provider.email}}" name="email"><br>
+    <label>Contact No.</label>
+    <input type="number" value="{{Provider.phone}}" name="phone"><br>
+    <label>Area</label>
+    <input type="text" value="{{Provider.area}}" name="area"><br>
+    <label>Pincode</label>
+    <input type="number" value="{{Provider.pin}}" name="pin"><br>
+    <label>City</label>
+    <input type="text" value="{{Provider.city}}" name="city"><br>
+    <label>State</label>
+    <input type="text" value="{{Provider.state}}" name="state"><br>
+    <input type="submit" value="Update">
+</form>
+</div>
+
 
 
 {% endblock %}

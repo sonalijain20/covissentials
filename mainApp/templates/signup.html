@@ -4,27 +4,91 @@
 	{% for i in messages %}
     {{i}}
     {% endfor %}
-    <a href="/">Home</a><br><br>
-    <form action="/signup/" method="post">
-        {% csrf_token %}
-        <label>Name</label><br>
-        <input type="text" name="name" required=""><br>
-        <label>Username</label><br>
-        <input type="text" name="uname" required=""><br>
-        <label>Email Address</label><br>
-        <input type="email" name="email" required=""><br>
-        <label>Contact no.</label><br>
-        <input type="number" name="contact" required=""><br>
-        <label>Area</label><br>
-        <input type="text" name="area" ><br>
-        <label>Pincode</label><br>
-        <input type="number" name="pin" ><br>
-        <label>City</label><br>
-        <input type="text" name="city" ><br>
-        <label>State</label><br>
-        <input type="text" name="state" ><br>
-        <label>Password</label><br>
-        <input type="password" name="pass" required=""><br><br>
-        <input type="submit" value="SIGN UP"><br>
-    </form>
+<!--<div class="main">-->
+<!--    <form action="/signup/" method="post">-->
+<!--        {% csrf_token %}-->
+<!--        <label>Name</label><br>-->
+<!--        <input type="text" name="name" required=""><br>-->
+<!--        <label>Username</label><br>-->
+<!--        <input type="text" name="uname" required=""><br>-->
+<!--        <label>Email Address</label><br>-->
+<!--        <input type="email" name="email" required=""><br>-->
+<!--        <label>Contact no.</label><br>-->
+<!--        <input type="number" name="contact" required=""><br>-->
+<!--        <label>Area</label><br>-->
+<!--        <input type="text" name="area" ><br>-->
+<!--        <label>Pincode</label><br>-->
+<!--        <input type="number" name="pin" ><br>-->
+<!--        <label>City</label><br>-->
+<!--        <input type="text" name="city" ><br>-->
+<!--        <label>State</label><br>-->
+<!--        <input type="text" name="state" ><br>-->
+<!--        <label>Password</label><br>-->
+<!--        <input type="password" name="pass" required=""><br><br>-->
+<!--        <button type="submit">Sign Up</button>-->
+<!--    </form>-->
+<!--</div>-->
+
+
+
+
+
+
+
+<div class="wrapper">
+<!--         <div class="title">-->
+<!--            Sign Up-->
+<!--         </div>-->
+         <form action="/signup/" method="post">
+             {% csrf_token %}
+              <div class="field">
+               <input type="text" required name="name">
+               <label>Name</label>
+            </div>
+              <div class="field">
+               <input type="text" required name="uname">
+               <label>Username</label>
+            </div>
+             <div class="field">
+               <input type="number" required name="phone">
+               <label>Contact No.</label>
+            </div>
+            <div class="field">
+               <input type="email" required name="email">
+               <label>Email Address</label>
+            </div>
+<!--              <div class="field">-->
+<!--               <input type="text" required name="area">-->
+<!--               <label>Area</label>-->
+<!--            </div>-->
+<!--              <div class="field">-->
+<!--               <input type="number" required name="pin">-->
+<!--               <label>Pincode</label>-->
+<!--            </div>-->
+<!--             <div class="field">-->
+<!--               <input type="text" required name="city">-->
+<!--               <label>City</label>-->
+<!--            </div>-->
+<!--             <div class="field">-->
+<!--               <input type="text" required name="state">-->
+<!--               <label>State</label>-->
+<!--            </div>-->
+            <div class="field">
+               <input type="password" name="password" required>
+               <label>Password</label>
+            </div>
+<!--            <div class="content">-->
+<!--&lt;!&ndash;               <div class="checkbox">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <input type="checkbox" id="remember-me">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <label for="remember-me">Remember me</label>&ndash;&gt;-->
+<!--&lt;!&ndash;               </div>&ndash;&gt;-->
+
+<!--            </div>-->
+            <div class="field">
+               <input type="submit" value="Login">
+            </div>
+
+         </form>
+      </div>
+
 {% endblock %}
