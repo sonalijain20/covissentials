@@ -239,17 +239,10 @@
     {% if not user.is_authenticated %}
     <div class="licon">
       <div class="nav-items">
-  <!--      &lt;!&ndash; The Menu items &ndash;&gt;-->
-  <!--      <li><a href="/">Home</a></li>-->
-  <!--      &lt;!&ndash; <li><a href="#">Contact Us</a></li> &ndash;&gt;-->
-  <!--      <li><a href="#">Covid Info</a></li>-->
-<!--        <li><a href="/signin/">Sign In</a></li>-->
         <li>
-          <a href="/signin/">
-            <i class="fas fa-user-circle fa-2x" style="color: white;"></i>
-          </a>
-
+          <a href="/signin/">Sign In</a>
         </li>
+        <li><a href="/signup/">Sign Up</a> </li>
       </div>
     {% else %}
       <li>
