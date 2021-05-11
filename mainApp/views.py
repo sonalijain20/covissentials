@@ -35,16 +35,16 @@ def signUp(request):
 
 def signIn(request):
     if (request.method == "POST"):
-        uname = request.POST.get('uname')
-        pword = request.POST.get('password')
-        user = auth.authenticate(username=uname, password=pword)
-        if (user.is_superuser):
-            return HttpResponseRedirect('/admin/')
-        if (user is not None):
-            print("\n\n\n\n\n\n\nhellooooooooooooo")
-            auth.login(request, user)
-            return HttpResponseRedirect('/')
-        else:
+        try:
+            uname = request.POST.get('uname')
+            pword = request.POST.get('password')
+            user = auth.authenticate(username=uname, password=pword)
+            if (user.is_superuser):
+                return HttpResponseRedirect('/admin/')
+            if (user is not None):
+                auth.login(request, user)
+                return HttpResponseRedirect('/')
+        except:
             messages.error(request, "Invalid Username or password")
     return render(request, "login.html",)
 
