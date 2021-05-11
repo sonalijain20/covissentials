@@ -12,23 +12,23 @@
     <form action="/signup/" method="post">
         {% csrf_token %}
         <label>Name</label><br>
-        <input type="text" name="name"><br>
+        <input type="text" name="name" required=""><br>
         <label>Username</label><br>
-        <input type="text" name="uname"><br>
+        <input type="text" name="uname" required=""><br>
         <label>Email Address</label><br>
-        <input type="email" name="email"><br>
+        <input type="email" name="email" required=""><br>
         <label>Contact no.</label><br>
-        <input type="number" name="contact"><br>
+        <input type="number" name="contact" required=""><br>
         <label>Area</label><br>
-        <input type="text" name="area"><br>
+        <input type="text" name="area" required=""><br>
         <label>Pincode</label><br>
-        <input type="number" name="pin"><br>
+        <input type="number" name="pin" required=""><br>
         <label>City</label><br>
-        <input type="text" name="city"><br>
+        <input type="text" name="city" required=""><br>
         <label>State</label><br>
-        <input type="text" name="state"><br>
+        <input type="text" name="state" required=""><br>
         <label>Password</label><br>
-        <input type="password" name="pass"><br><br>
+        <input type="password" name="pass" required=""><br><br>
         <input type="submit" value="SIGN UP"><br>
     </form>
 </body>

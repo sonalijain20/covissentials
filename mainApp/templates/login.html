@@ -6,13 +6,13 @@
 </head>
 <body>
 	{% for i in messages %}
-							{{i}}
-							{% endfor %}
+    {{i}}
+    {% endfor %}
     <a href="/">Home</a><br>
         <form action="/signin/" method="post">
             {% csrf_token %}
-            <input type="text" name="uname"><br>
-            <input type="password" name="password"><br><br>
+            <input type="text" name="uname" required=""><br>
+            <input type="password" name="password" required=""><br><br>
             <input type="submit" value="Sign In"><br>
         </form>
 <a href="/signup/">Sign up</a>
