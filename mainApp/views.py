@@ -52,3 +52,15 @@ def signIn(request):
 def signOut(request):
     auth.logout(request)
     return HttpResponseRedirect('/')
+
+
+def profile(request):
+    user = User.objects.get(username=request.user)
+    if (user.is_superuser):
+        return HttpResponseRedirect('/admin/')
+    else:
+        try:
+            p =Provider.objects.get(uname=request.user)
+            return render(request, "profile.html")
+        except:
+            return render(request, "profile.html")

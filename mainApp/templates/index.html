@@ -225,17 +225,7 @@
     <div class="logo">
       <a href="/" class="logo">Covissentials</a>
     </div>
-
-    <div class="nav-items">
-
-
-      <!-- The Menu items -->
-      <li><a href="/">Home</a></li>
-      <!-- <li><a href="#">Contact Us</a></li> -->
-      <li><a href="#">Covid Info</a></li>
-      <li><a href="/signin/">Sign In</a></li>
-    </div>
-
+    <div class="nav-items"></div>
     <!-- Defining the search bars -->
     <div class="searchbar">
       <input type="text" placeholder="search">
@@ -245,16 +235,37 @@
     </div>
 
 <!--     Defining the login button-->
+
+    {% if not user.is_authenticated %}
     <div class="licon">
+      <div class="nav-items">
+  <!--      &lt;!&ndash; The Menu items &ndash;&gt;-->
+  <!--      <li><a href="/">Home</a></li>-->
+  <!--      &lt;!&ndash; <li><a href="#">Contact Us</a></li> &ndash;&gt;-->
+  <!--      <li><a href="#">Covid Info</a></li>-->
+<!--        <li><a href="/signin/">Sign In</a></li>-->
+        <li>
+          <a href="/signin/">
+            <i class="fas fa-user-circle fa-2x" style="color: white;"></i>
+          </a>
+
+        </li>
+      </div>
+    {% else %}
       <li>
-        <a href="#">
-          <i class="fas fa-user-circle
-            fa-2x" style="color: white;">
+        <a href="/profile/" >
+          <i class="fas fa-user-circle fa-2x" style="color: white;">
+          </i>
+        </a>
+      </li>
+      <li>
+        <a href="/signout/" >
+          <i class="fas fa-lock fa-2x" style="color: white;">
           </i>
         </a>
       </li>
     </div>
-
+    {% endif %}
   </nav>
   {% block body %}
   <div class="main">

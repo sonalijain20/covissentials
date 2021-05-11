@@ -4,12 +4,16 @@
 	{% for i in messages %}
     {{i}}
     {% endfor %}
-    <a href="/">Home</a><br>
-        <form action="/signin/" method="post">
+<div>
+    <form action="/signin/" method="post">
             {% csrf_token %}
+            <label>Username</label><br>
             <input type="text" name="uname" required=""><br>
+            <label>Password</label><br>
             <input type="password" name="password" required=""><br><br>
             <input type="submit" value="Sign In"><br>
         </form>
-<a href="/signup/">Sign up</a>
+<p>Don't have an account?</p><a href="/signup/">Sign up</a>
+</div>
+
 {% endblock %}
