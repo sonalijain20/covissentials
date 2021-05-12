@@ -116,3 +116,15 @@ def editResource(request,num):
     return render(request, "editresource.html", {
                                                 "Resource": r,
                                                  "Category":category})
+
+
+def addCategory(request):
+    if(request.method=="POST"):
+        try:
+            c = Category()
+            c.name = request.POST.get('cat');
+            c.save()
+            return HttpResponseRedirect('/addresource/')
+        except:
+            return HttpResponseRedirect('/')
+    return render(request, "addCategory.html")
