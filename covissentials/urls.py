@@ -24,6 +24,8 @@ urlpatterns = [
     path('signin/',views.signIn),
     path('signout/',views.signOut),
     path('profile/', views.profile),
+    path('resources/', views.resources),
+
     path('addresource/', views.addResource),
     path('editresource/<int:num>/', views.editResource),
     path('addcategory/',views.addCategory),

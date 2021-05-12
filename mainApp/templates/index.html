@@ -147,20 +147,20 @@
         color: #0e0d0d !important;
       }
 
-    .button {
-      border-radius: 4px;
-      background-color: #34abeb;
-      border: none;
-      color: #FFFFFF;
-      text-align: center;
-      font-size: 28px;
-      padding: 40px;
-      width: 250px;
-      transition: all 0.5s;
-      cursor: pointer;
-      margin-left: 300px;
-      position: relative;
-    }
+.button {
+  border-radius: 4px;
+  background-color: green;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 40px;
+  width: 250px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-left: 300px;
+  position: relative;
+}
 
     .button span {
       cursor: pointer;
@@ -182,136 +182,167 @@
       padding-right: 25px;
     }
 
-    .button:hover span:after {
-      opacity: 1;
-      right: 0;
-    }
-    ::selection{
-      background: #037729;
-        color: #fff;
-    }
-    .wrapper{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 380px;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
-    }
-    .wrapper .title{
-      font-size: 35px;
-      font-weight: 600;
-      text-align: center;
-      line-height: 100px;
-      color: #fff;
-      user-select: none;
-      border-radius: 15px 15px 0 0;
-      background: #037729;
-    }
-    .wrapper form{
-      padding: 10px 30px 50px 30px;
-    }
-    .wrapper form .field{
-      height: 50px;
-      width: 100%;
-      margin-top: 20px;
-      position: relative;
-    }
-    .wrapper form .field input{
-      height: 100%;
-      width: 100%;
-      outline: none;
-      font-size: 17px;
-      padding-left: 20px;
-      border: 1px solid lightgrey;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-    }
-    .wrapper form .field input:focus,
-    form .field input:valid{
-      border-color: #4158d0;
-    }
-    .wrapper form .field label{
-      position: absolute;
-      top: 50%;
-      left: 20px;
-      color: #999999;
-      font-weight: 400;
-      font-size: 17px;
-      pointer-events: none;
-      transform: translateY(-50%);
-      transition: all 0.3s ease;
-    }
-    form .field input:focus ~ label,
-    form .field input:valid ~ label{
-      top: 0%;
-      font-size: 16px;
-      color: #037729;
-      background: #fff;
-      transform: translateY(-50%);
-    }
-    form .content{
-      display: flex;
-      width: 100%;
-      height: 50px;
-      font-size: 16px;
-      align-items: center;
-      justify-content: space-around;
-    }
-    form .content .checkbox{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    form .content input{
-      width: 15px;
-      height: 15px;
-      background: red;
-    }
-    form .content select{
-      width: 15px;
-      height: 15px;
-      background: red;
-    }
-    form .content label{
-      color: #262626;
-      user-select: none;
-      padding-left: 5px;
-    }
-    form .content .pass-link{
-      color: "";
-    }
-    form .field input[type="submit"]{
-      color: #fff;
-      border: none;
-      padding-left: 0;
-      margin-top: -10px;
-      font-size: 20px;
-      font-weight: 500;
-      cursor: pointer;
-      background:  #037729;
-      transition: all 0.3s ease;
-    }
-    form .field input[type="submit"]:active{
-      transform: scale(0.95);
-    }
-    form .signup-link{
-      color: #262626;
-      margin-top: 20px;
-      text-align: center;
-    }
-    form .pass-link a,
-    form .signup-link a{
-      color: #037729;
-      text-decoration: none;
-    }
-    form .pass-link a:hover,
-    form .signup-link a:hover{
-      text-decoration: underline;
-    }
-
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+::selection{
+  background: #037729;
+    color: #fff;
+}
+.wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+}
+.wrapper .title{
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+  user-select: none;
+  border-radius: 15px 15px 0 0;
+  background: #037729;
+}
+.wrapper form{
+  padding: 10px 30px 50px 30px;
+}
+.wrapper form .field{
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+.wrapper form .field input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+  padding-left: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+.wrapper form .field input:focus,
+form .field input:valid{
+  border-color: #4158d0;
+}
+.wrapper form .field label{
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  color: #999999;
+  font-weight: 400;
+  font-size: 17px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+form .field input:focus ~ label,
+form .field input:valid ~ label{
+  top: 0%;
+  font-size: 16px;
+  color: #037729;
+  background: #fff;
+  transform: translateY(-50%);
+}
+form .content{
+  display: flex;
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-around;
+}
+form .content .checkbox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+form .content input{
+  width: 15px;
+  height: 15px;
+  background: red;
+}
+form .content label{
+  color: #262626;
+  user-select: none;
+  padding-left: 5px;
+}
+form .content .pass-link{
+  color: "";
+}
+form .field input[type="submit"]{
+  color: #fff;
+  border: none;
+  padding-left: 0;
+  margin-top: -10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  background:  #037729;
+  transition: all 0.3s ease;
+}
+form .field input[type="submit"]:active{
+  transform: scale(0.95);
+}
+form .signup-link{
+  color: #262626;
+  margin-top: 20px;
+  text-align: center;
+}
+form .pass-link a,
+form .signup-link a{
+  color: #037729;
+  text-decoration: none;
+}
+form .pass-link a:hover,
+form .signup-link a:hover{
+  text-decoration: underline;
+}
+.myDiv {
+  background-color: white;
+  width: 800px;
+  height: 100px;
+  border: 15px solid green;
+  padding: 10px;
+  margin: 50px;
+  align-self:center;
+}
+.myDiv1 {
+  background-color: white;
+  width: 800px;
+  height: 100px;
+  border: 15px solid green;
+  padding: 10px;
+  margin: 50px;
+}
+.myDiv2 {
+  background-color: white;
+  width: 800px;
+  height: 100px;
+  border: 15px solid green;
+  padding: 10px;
+  margin: 50px;
+}.myDiv3 {
+  background-color: white;
+  width: 800px;
+  height: 100px;
+  border: 15px solid green;
+  padding: 10px;
+  margin: 50px;
+}
+.wrapper {
+  border-radius:5 px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
 
     </style>
 
@@ -382,10 +413,9 @@
     <br>
     <br>
 
-<a href="/"><button class="button"><span>Resources</span></button></a>
+  <a href="/resources/"><button class="button"><span>Resources</span></button></a>
 <!-- <button class="button"><span>Helpout</span></button>
- -->
-  <a href="/"><button class="button"><span>Consultants</span></button></a>
+ --><a href="/"><button class="button"><span>Consultants</span></button></a>
 
 {% endblock %}
 </body>
