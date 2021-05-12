@@ -4,10 +4,20 @@ from .models import *
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
 
 # Create your views here.
 
 def home(request):
+    if (request.method == "POST"):
+        try:
+            msg = request.POST.get('search')
+            c = Category.objects.get(Q(name__icontains=msg))
+            r = Resource.objects.filter(Q(category_id=c.id))
+            return render(request, "search.html", {"Resources": r})
+        except:
+            messages.error(request, "Username already exists")
+            return render(request, "search.html")
     return render(request, "index.html")
 
 

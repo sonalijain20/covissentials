@@ -316,29 +316,6 @@ form .signup-link a:hover{
   align-self:center;
   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
 }
-<!--.myDiv1 {-->
-<!--  background-color: white;-->
-<!--  width: 800px;-->
-<!--  height: 100px;-->
-<!--  border: 15px solid green;-->
-<!--  padding: 10px;-->
-<!--  margin: 50px;-->
-<!--}-->
-<!--.myDiv2 {-->
-<!--  background-color: white;-->
-<!--  width: 800px;-->
-<!--  height: 100px;-->
-<!--  border: 15px solid green;-->
-<!--  padding: 10px;-->
-<!--  margin: 50px;-->
-<!--}.myDiv3 {-->
-<!--  background-color: white;-->
-<!--  width: 800px;-->
-<!--  height: 100px;-->
-<!--  border: 15px solid green;-->
-<!--  padding: 10px;-->
-<!--  margin: 50px;-->
-<!--}-->
 .wrapper {
   border-radius:5 px;
   background-color: #f2f2f2;
@@ -361,14 +338,6 @@ form .signup-link a:hover{
       <a href="/" class="logo">Covissentials</a>
     </div>
     <div class="nav-items"></div>
-    <!-- Defining the search bars -->
-<!--    <div class="searchbar">-->
-<!--      <input type="text" placeholder="search">-->
-<!--      <div class="icon">-->
-<!--        <i class="fas fa-search"></i>-->
-<!--      </div>-->
-<!--    </div>-->
-
 
 <!--     Defining the login button-->
 
@@ -393,14 +362,13 @@ form .signup-link a:hover{
     {% endif %}
 
     <div class="searchbar">
-      <form>
+      <form method="post" action="/">
         {% csrf_token %}
-        <input type="text" placeholder="search" required="">
+        <input type="text" placeholder="Search Resources" name="search" required="">
         <div class="icon">
           <button type="submit">
             <i class="fas fa-search"></i>
           </button>
-
         </div>
       </form>
 
@@ -415,8 +383,7 @@ form .signup-link a:hover{
     <br>
 
   <a href="/display/"><button class="button"><span>Resources</span></button></a>
-<!-- <button class="button"><span>Helpout</span></button>
- --><a href="/display/"><button class="button"><span>Consultants</span></button></a>
+ <a href="/display/"><button class="button"><span>Locations</span></button></a>
 
 {% endblock %}
 </body>
