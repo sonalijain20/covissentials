@@ -12,7 +12,7 @@ def home(request):
 
 
 def resources(request):
-    return render(request, "resources.html")
+    return render(request, "display.html")
 
 def signUp(request):
     if(request.method=="POST"):
@@ -158,5 +158,10 @@ def deleteResource(request, num):
     r = Resource.objects.get(id = num)
     r.delete()
     return HttpResponseRedirect('/resources/')
+
+
+def display(request):
+    r = Resource.objects.all()
+    return render(request, "display.html", {"Resource": r})
 
 

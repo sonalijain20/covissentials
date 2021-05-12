@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+{% for i in Resource %}
+<div class="myDiv">
+    <h3>{{i.rname}}</h3>
+    <h5>Provided by: {{i.provider.name}}</h5>
+    <h6>{{i.provider.area}}</h6>
+    <h6> {{i.provider.city}}, {{i.provider.state}}</h6>
+    <h6> Availability: {{i.avail}}</h6>
+    <h4>{{i.provider.phone}}</h4>
+</div>
+{% endfor %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
