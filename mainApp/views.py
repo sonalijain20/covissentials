@@ -11,6 +11,9 @@ def home(request):
     return render(request, "index.html")
 
 
+def resources(request):
+    return render(request, "resources.html")
+
 def signUp(request):
     if(request.method=="POST"):
         p=Provider()
