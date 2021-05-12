@@ -5,10 +5,6 @@
     <div class="title">
         Welcome {{Provider.name}}
     </div>
-
-
-
-
     <form method="post">
         {% csrf_token %}
         <label>Name</label>
@@ -31,8 +27,9 @@
             <input type="submit" value="Update">
         </div>
         <div class="signup-link">
-            <a href="/addresource/"> Add Resource</a>
-            <a href="/editresource/{{Provider.id}}"> Edit Resource</a>
+            <a href="/addresource/"> Add Resource</a><br>
+<!--            <a href="/editresource/{{Provider.id}}"> Edit Resource</a>-->
+            <a href="/resources/">View Resources</a>
         </div>
     </form>
 </div>

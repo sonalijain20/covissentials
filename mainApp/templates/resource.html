@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<div class="wrapper">
+    {% if not Resources %}
+        <h3 >You have no resources</h3>
+    {% else %}
+    <table border="2">
+        <div class="field">
+            <tr>
+            <th>Resource Name</th>
+            <th>Availability</th>
+            <th>Blood Group</th>
+        </tr>
+        </div>
+        {% for i in Resources %}
+        <div class="field">
+            <tr>
+            <td>{{i.rname}}</td>
+            <td>{{i.avail}}</td>
+            <td>{{i.blood_group}}</td>
+            <td><a href="">Edit</a><br>
+            <a href="/delete/{{i.id}}">Delete</a></td>
+        </tr>
+        </div>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

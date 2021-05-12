@@ -27,4 +27,6 @@ urlpatterns = [
     path('addresource/', views.addResource),
     path('editresource/<int:num>/', views.editResource),
     path('addcategory/',views.addCategory),
+    path('resources/', views.resources),
+    path('delete/<int:num>/', views.deleteResource),
 ]
