@@ -337,19 +337,6 @@
 <!--      </div>-->
 <!--    </div>-->
 
-    <div class="searchbar">
-      <form>
-        {% csrf_token %}
-        <input type="text" placeholder="search" required="">
-        <div class="icon">
-          <button type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-
-        </div>
-      </form>
-
-    </div>
 
 <!--     Defining the login button-->
 
@@ -372,6 +359,21 @@
       </div>
 
     {% endif %}
+
+    <div class="searchbar">
+      <form>
+        {% csrf_token %}
+        <input type="text" placeholder="search" required="">
+        <div class="icon">
+          <button type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+
+        </div>
+      </form>
+
+    </div>
+
   </nav>
   {% block body %}
   <div class="main"><br>
