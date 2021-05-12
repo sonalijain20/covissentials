@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<div class="wrapper">
+    <form method="post">
+        {% csrf_token %}
+        <label>Category name</label>
+        <input type="text" name="cat" required>
+        <button type="submit">Add</button>
+    </form>
+
+
+
+
+</div>
+{% endblock %}

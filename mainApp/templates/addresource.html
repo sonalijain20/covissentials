@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<div class="wrapper">
+	<div class="title">
+		Add Resources
+	</div>
+	<form  method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="field">
+			<input type="text"  name="rname">
+			<label>Resource Name</label>
+		</div>
+		<div class="field">
+			<input type="number"  name="avail">
+			<label>Availibility</label>
+		</div>
+		<br><label>Category</label>
+		<select name="category" class="form-select" >
+			{% for i in Category %}
+			<option value="{{i.name}}">{{i.name}}</option>
+			{% endfor %}
+		</select><a href="/addcategory/"><span>Add Category</span></a><br>
+		<div align="center">
+
+		</div>
+		<div class="field">
+			<input type="text" name="blood">
+			<label>Blood Group</label>
+		</div>
+		<div class="field">
+			<input type="submit" value="Add">
+		</div>
+
+	</form>
+</div>
+
+
+{% endblock %}

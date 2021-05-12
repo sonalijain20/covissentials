@@ -4,4 +4,5 @@ from .models import *
 # Register your models here.
 
 admin.site.register(Provider)
-admin.site.register(Resources)
+admin.site.register(Category)
+admin.site.register(Resource)
