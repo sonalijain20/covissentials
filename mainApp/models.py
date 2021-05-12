@@ -16,8 +16,18 @@ class Provider(models.Model):
         return str(self.id) + " " + self.name
 
 
-class Resources(models.Model):
-    resource = models.CharField(max_length=50)
+class Category(models.Model):
+    name = models.CharField(max_length=50)
 
     def __str__(self):
         return str(self.id) + " " + self.name
+
+
+class Resource(models.Model):
+    rname = models.CharField(max_length=50)
+    provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
+    avail=models.IntegerField(default=None,null=True,blank=True)
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.id) + " " + self.rname

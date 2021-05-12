@@ -24,4 +24,6 @@ urlpatterns = [
     path('signin/',views.signIn),
     path('signout/',views.signOut),
     path('profile/', views.profile),
+    path('addresource/', views.addResource),
+    path('editresource/<int:num>/', views.editResource),
 ]

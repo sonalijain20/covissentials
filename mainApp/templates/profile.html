@@ -2,7 +2,9 @@
 {% load static %}
 {% block body %}
 <div class="wrapper">
-    <h3>Welcome {{Provider.name}}</h3>
+    <h3>Welcome {{Provider.name}}</h3><br>
+<a class="" href="/addresource/"> Add Resource</a>
+<a class="btn btn-success" href="/editresource/{{Provider.id}}"> Edit Resource</a>
 <form method="post">
     {% csrf_token %}
     <label>Name</label>

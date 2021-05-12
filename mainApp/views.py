@@ -75,3 +75,44 @@ def profile(request):
             return render(request, "profile.html", {"Provider":p})
         except:
             return render(request, "profile.html")
+
+
+# @login_required(login_url='/login/')
+def addResource(request):
+    user = User.objects.get(username=request.user)
+    if (user.is_superuser):
+        return HttpResponseRedirect('/admin/')
+    category = Category.objects.all()
+    if(request.method=="POST"):
+        try:
+            p = Provider.objects.get(uname=request.user)
+            r =Resource()
+            r.rname=request.POST.get('rname')
+            r.avail=request.POST.get('avail')
+            r.category=Category.objects.get(name=request.POST.get('category'))
+            r.provider = p
+            r.save()
+            return HttpResponseRedirect('/profile/')
+        except:
+            return HttpResponseRedirect('/')
+    return render(request,"addresource.html", {"Category": category})
+
+
+# @login_required(login_url='/login/')
+def editResource(request,num):
+    user = User.objects.get(username=request.user)
+    if (user.is_superuser):
+        return HttpResponseRedirect('/admin/')
+    r = Resource.objects.get(id=num)
+    category=Category.objects.all()
+    if(request.method =="POST"):
+        p = Provider.objects.get(uname=request.user)
+        r.name = request.POST.get('rname')
+        r.avail = request.POST.get('avail')
+        r.category = Category.objects.get(name=request.POST.get('category'))
+        r.provider = p
+        r.save()
+        return HttpResponseRedirect('/profile/')
+    return render(request, "editresource.html", {
+                                                "Resource": r,
+                                                 "Category":category})

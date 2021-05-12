@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<section id="form"><!--form-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="signup-form"><!--sign up form-->
+						<h2>Add Resources</h2>
+						<form  method="post" enctype="multipart/form-data">
+						    {% csrf_token %}
+							<label>Resource Name</label>
+							<input type="text"  name="rname" />
+							<label>Availibility</label>
+							<input type="number"  name="avail" />
+                            <label>Category</label>
+                            <select name="category" class="form-select" >
+                               {% for i in Category %}
+                               <option value="{{i.name}}">{{i.name}}</option>
+                                {% endfor %}
+                           </select>
+<!--                            <label>Image 1</label>-->
+<!--                            <input type="file" name="img1">-->
+                            <button type="submit" >Add Resource</button>
+						</form>
+					</div><!--/sign up form-->
+				</div>
+			</div>
+		</div>
+	</section><!--/form-->
+
+{% endblock %}
