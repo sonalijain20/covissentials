@@ -2,24 +2,27 @@
 {% load static %}
 {% block body %}
 <div class="wrapper">
-	<h2>Add Resources</h2>
-						<form  method="post" enctype="multipart/form-data">
-						    {% csrf_token %}
-							<label>Resource Name</label>
-							<input type="text"  name="rname" /><br>
-							<label>Availibility</label>
-							<input type="number"  name="avail" /><br>
-                            <label>Category</label>
-                            <select name="category" class="form-select" >
-                               {% for i in Category %}
-                               <option value="{{i.name}}">{{i.name}}</option>
-                                {% endfor %}
-                           </select>
-							<a href="/addcategory/">Add another Category</a><br>
-<!--                            <label>Image 1</label>-->
-<!--                            <input type="file" name="img1">-->
-                            <button type="submit" >Add Resource</button>
-						</form>
+	<div class="title">
+		Add Resources
+	</div>
+	<form  method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<label>Resource Name</label>
+		<input type="text"  name="rname" /><br>
+		<label>Availibility</label>
+		<input type="number"  name="avail" /><br>
+		<label>Category</label>
+		<select name="category" class="form-select" >
+			{% for i in Category %}
+			<option value="{{i.name}}">{{i.name}}</option>
+			{% endfor %}
+		</select>
+		<a href="/addcategory/">Add Category</a><br>
+		<div class="field">
+			<input type="submit" value="Add">
+		</div>
+
+	</form>
 </div>
 
 

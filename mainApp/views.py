@@ -103,19 +103,23 @@ def editResource(request,num):
     user = User.objects.get(username=request.user)
     if (user.is_superuser):
         return HttpResponseRedirect('/admin/')
-    r = Resource.objects.get(id=num)
-    category=Category.objects.all()
-    if(request.method =="POST"):
-        p = Provider.objects.get(uname=request.user)
-        r.name = request.POST.get('rname')
-        r.avail = request.POST.get('avail')
-        r.category = Category.objects.get(name=request.POST.get('category'))
-        r.provider = p
-        r.save()
+    try:
+        r = Resource.objects.get(id=num)
+        category=Category.objects.all()
+        if(request.method =="POST"):
+            p = Provider.objects.get(uname=request.user)
+            r.name = request.POST.get('rname')
+            r.avail = request.POST.get('avail')
+            r.category = Category.objects.get(name=request.POST.get('category'))
+            r.provider = p
+            r.save()
+            return HttpResponseRedirect('/profile/')
+        return render(request, "editresource.html", {
+                                                    "Resource": r,
+                                                     "Category":category})
+    except:
         return HttpResponseRedirect('/profile/')
-    return render(request, "editresource.html", {
-                                                "Resource": r,
-                                                 "Category":category})
+
 
 
 def addCategory(request):

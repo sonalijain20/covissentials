@@ -28,6 +28,7 @@ class Resource(models.Model):
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
     avail=models.IntegerField(default=None,null=True,blank=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    blood_group = models.CharField(max_length=20, null=True, blank=True, default=None)
 
     def __str__(self):
         return str(self.id) + " " + self.rname
