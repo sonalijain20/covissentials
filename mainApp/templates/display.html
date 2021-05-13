@@ -1,13 +1,13 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block body %}
-<div>
+
  {% if not Resource %}
     <div class="wrapper">
-        <h3>No results found</h3>
+        <h3>No results found for {{Rname.name}} in {{Lname.state}}</h3>
     </div>
 {% else %}
-    <div><br><br>
+<br><br>
         {% if Rname and Lname %}
         <h3 align="center">Displaying {{Rname.name}} in {{Lname.state}} </h3>
         {% elif not Rname and Lname %}
@@ -17,29 +17,28 @@
         {% else %}
         <h3 align="center">Displaying all Resources  </h3>
         {% endif %}
-
-
-
-
-
-
-
         {% for i in Resource %}
-    <div class="myDiv">
+        <div class="parent">
+            <div class="myDiv">
                    <h3>{{i.rname}}</h3>
                     <h5>Provided by: {{i.provider.name}}</h5>
                     <h6>{{i.provider.area}}</h6>
                     <h6>{{i.provider.state.state}}</h6>
                     <h6> Availability: {{i.avail}}</h6>
                     <h4>{{i.provider.phone}}</h4>
-    </div>
+
+        </div>
+        </div>
+
 
 
         {% endfor %}
 
-    </div>
+
 {% endif %}
-</div>
+
+
+
 {% endblock %}
 
 
