@@ -3,10 +3,11 @@
 {% block body %}
 
 
-	{% for i in messages %}
+
+    <div class="wrapper">
+        {% for i in messages %}
     {{i}}
     {% endfor %}
-    <div class="wrapper">
              <form action="/signin/" method="post">
                  {% csrf_token %}
                 <div class="field">

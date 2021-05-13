@@ -39,6 +39,7 @@ def signUp(request):
         try:
             user = User.objects.create_user(username=p.uname, email=p.email, password=pword)
             p.save()
+            messages.success(request, "Account Created!! Please login")
             return HttpResponseRedirect('/signin/')
         except:
             messages.error(request, "Username already exists")
@@ -95,6 +96,7 @@ def addResource(request):
     if (user.is_superuser):
         return HttpResponseRedirect('/admin/')
     category = Category.objects.all()
+    state = State.objects.all()
     if(request.method=="POST"):
         try:
             p = Provider.objects.get(uname=request.user)
@@ -102,13 +104,14 @@ def addResource(request):
             r.rname=request.POST.get('rname')
             r.avail=int(request.POST.get('avail'))
             r.category=Category.objects.get(name=request.POST.get('category'))
+            r.state=State.objects.get(state=request.POST.get('state'))
             r.blood_group = request.POST.get('blood')
             r.provider = p
             r.save()
             return HttpResponseRedirect('/profile/')
         except:
             return HttpResponseRedirect('/')
-    return render(request,"addresource.html", {"Category": category})
+    return render(request,"addresource.html", {"Category": category, "State": state})
 
 
 # @login_required(login_url='/login/')
@@ -171,8 +174,15 @@ def deleteResource(request, num):
     return HttpResponseRedirect('/resources/')
 
 
-def display(request):
-    r = Resource.objects.all()
+def display(request, res, loc ):
+    if (res == 0 and loc == 0):
+        r = Resource.objects.all()
+    elif( not res == 0 and  loc == 0):
+        r = Resource.objects.filter(category=res)
+    elif( res == 0 and not loc == 0):
+        r = Resource.objects.filter(state=loc)
+    else :
+        r = Resource.objects.filter(state=loc, category=res)
     return render(request, "display.html", {"Resource": r})
 
 def contactDetails(request):
@@ -186,4 +196,13 @@ def contactDetails(request):
         messages.success(request,"Message Sent")
         return HttpResponseRedirect('/contact/')
     return render(request,"contact-us.html")
+
+def optionsRes(request):
+    r = Category.objects.all()
+    return render(request, "optionsres.html", {"Options" :r})
+
+
+def optionsLoc(request):
+    r = State.objects.all()
+    return render(request, "optionsloc.html", {"Options" :r})
 

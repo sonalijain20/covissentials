@@ -60,7 +60,7 @@
         /* Styling all the nav items as a whole */
         nav .nav-items {
             display: flex;
-            flex: 1;
+            flex: -1;
             padding: 0 0 0 200px;
         }
 
@@ -321,7 +321,48 @@ form .signup-link a:hover{
   background-color: #f2f2f2;
   padding: 20px;
 }
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  margin-left: 100%;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  margin-left: 100%;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
     </style>
 
     <meta name="viewport" content=
@@ -351,7 +392,7 @@ form .signup-link a:hover{
     {% else %}
       <div class="nav-items">
         <li><a href="/profile/" >Profile</a></li>
-        <li><a href="/signout/" >Sign Out</a></li>
+        <li><a href="/signout/" >SignOut</a></li>
         <li><a href="/contact/">Contact</a> </li>
       </div>
 
@@ -378,12 +419,15 @@ form .signup-link a:hover{
     <br>
     <br>
 
-  <a href="/display/"><button class="button"><span>Resources</span></button></a>
- <a href="/display/"><button class="button"><span>Locations</span></button></a>
+  <a href="/optionsres/"><button class="button"><span>Resources</span></button></a>
+ <a href="/optionsloc/"><button class="button"><span>Locations</span></button></a>
   <br>
   <br>
   <a href=""><button class="button"><span>Donate</span></button></a>
-  <a href=""><button class="button"><span>Covid Info.</span></button></a>
+  <a href=""><button class="button"><span>Covid Info</span></button></a>
+   <br>
+  <br>
+  <br>
 
 {% endblock %}
 </body>

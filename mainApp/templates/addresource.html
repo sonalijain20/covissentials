@@ -2,9 +2,9 @@
 {% load static %}
 {% block body %}
 <div class="wrapper">
-	<div class="title">
-		Add Resources
-	</div>
+<!--	<div class="title">-->
+<!--		Add Resources-->
+<!--	</div>-->
 	<form  method="post" enctype="multipart/form-data">
 		{% csrf_token %}
 		<div class="field">
@@ -20,7 +20,14 @@
 			{% for i in Category %}
 			<option value="{{i.name}}">{{i.name}}</option>
 			{% endfor %}
-		</select><a href="/addcategory/"><span>Add Category</span></a><br>
+		</select><br>
+		<a href="/addcategory/"><span>Add Category</span></a><br>
+		<label>State</label>
+		<select name="state" class="form-select" >
+			{% for i in State %}
+			<option value="{{i.state}}">{{i.state}}</option>
+			{% endfor %}
+		</select>
 		<div align="center">
 
 		</div>

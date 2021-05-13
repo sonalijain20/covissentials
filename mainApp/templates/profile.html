@@ -2,8 +2,7 @@
 {% load static %}
 {% block body %}
 <div class="wrapper">
-    <div class="title">
-        Welcome {{Provider.name}}
+    <div class="title">{{Provider.name}}
     </div>
     <form method="post">
         {% csrf_token %}
