@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<br>
+
+<div class="row justify-content-center">
+<h2>Help Them by Donating.</h2>
+
+</div>
+<br>
+<br>
+<div class="row justify-content-center">
+
+    <div class="col-12 col-md-3 my-2 ">
+        <a href="https://www.pmcares.gov.in/en/web/contribution/donate_india" rel="noreferrer" target="_blank">
+            <div class="donationCard card">
+                 <img height="250px" width="150px" src="{% static 'images/PM_Cares_Fund.jpg' %}" alt="Card image cap" class="card-img-top">
+            </div>
+        </a>
+    </div>
+    <div class="col-12 col-md-3 my-2 ">
+        <a href="/cmfund/" rel="noreferrer" target="_blank">
+            <div class="donationCard card">
+                 <img height="250px" width="150px" src="{% static 'images/cmfund.jpg' %}" alt="Card image cap" class="card-img-top">
+            </div>
+        </a>
+    </div>
+    <div class="col-12 col-md-3 my-2 ">
+        <a href="https://www.instamojo.com/@soodcharityfoundation/lcbf43d4ae0824ea4a4118175cd8e9d28/" rel="noreferrer" target="_blank">
+            <div class="donationCard card">
+                 <img height="250px" width="150px" src="{% static 'images/WL3DPRsi_400x400.jpg' %}" alt="Card image cap" class="card-img-top">
+            </div>
+        </a>
+    </div>
+    <div class="col-12 col-md-3 my-2 ">
+        <a href="https://www.akshayapatra.org/covid-relief-services" rel="noreferrer" target="_blank">
+            <div class="donationCard card">
+                 <img height="250px" width="150px" src="{% static 'images/Akshaya-Patra.jpg' %}" alt="Card image cap" class="card-img-top">
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+
+

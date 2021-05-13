@@ -31,5 +31,8 @@ urlpatterns = [
     path('display/', views.display),
     path('delete/<int:num>/', views.deleteResource),
     path('contact/', views.contactDetails),
+    path('donate/', views.donate),
+    path('covinfo/', views.covInfo),
+    path('cmfund/', views.cmFund),
 
 ]

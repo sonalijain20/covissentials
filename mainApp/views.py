@@ -188,3 +188,13 @@ def contactDetails(request):
         return HttpResponseRedirect('/contact/')
     return render(request,"contact-us.html")
 
+
+def donate(request):
+    return render(request, "donate.html")
+
+def covInfo(request):
+    return render(request, "covinfo.html")
+
+def cmFund(request):
+    return render(request, "cmfund.html")
+
