@@ -28,7 +28,7 @@ urlpatterns = [
     path('addresource/', views.addResource),
     path('editresource/<int:num>/', views.editResource),
     path('addcategory/',views.addCategory),
-    path('display/<int:res>/<int:loc>', views.display),
+    path('display/<int:res>/<int:loc>/', views.display),
     path('delete/<int:num>/', views.deleteResource),
     path('contact/', views.contactDetails),
     path('optionsres/', views.optionsRes),

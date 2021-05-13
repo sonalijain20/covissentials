@@ -1,20 +1,10 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block body %}
-
-
-
-
-
-
-
 <div class="wrapper">
     {% for i in messages %}
     {{i}}
     {% endfor %}
-<!--         <div class="title">-->
-<!--            Sign Up-->
-<!--         </div>-->
          <form action="/signup/" method="post">
              {% csrf_token %}
               <div class="field">
@@ -33,33 +23,10 @@
                <input type="email" required name="email">
                <label>Email Address</label>
             </div>
-<!--              <div class="field">-->
-<!--               <input type="text" required name="area">-->
-<!--               <label>Area</label>-->
-<!--            </div>-->
-<!--              <div class="field">-->
-<!--               <input type="number" required name="pin">-->
-<!--               <label>Pincode</label>-->
-<!--            </div>-->
-<!--             <div class="field">-->
-<!--               <input type="text" required name="city">-->
-<!--               <label>City</label>-->
-<!--            </div>-->
-<!--             <div class="field">-->
-<!--               <input type="text" required name="state">-->
-<!--               <label>State</label>-->
-<!--            </div>-->
             <div class="field">
                <input type="password" name="password" required>
                <label>Password</label>
             </div>
-<!--            <div class="content">-->
-<!--&lt;!&ndash;               <div class="checkbox">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <input type="checkbox" id="remember-me">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <label for="remember-me">Remember me</label>&ndash;&gt;-->
-<!--&lt;!&ndash;               </div>&ndash;&gt;-->
-
-<!--            </div>-->
             <div class="field">
                <input type="submit" value="Sign Up">
             </div>
