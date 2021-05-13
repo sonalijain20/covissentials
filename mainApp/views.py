@@ -38,7 +38,6 @@ def signUp(request):
         pword=request.POST.get('password')
         try:
             user = User.objects.create_user(username=p.uname, email=p.email, password=pword)
-
             p.save()
             return HttpResponseRedirect('/')
         except:
