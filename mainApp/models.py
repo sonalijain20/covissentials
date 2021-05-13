@@ -9,7 +9,8 @@ class Provider(models.Model):
     phone = models.CharField(max_length=20, default=None, null=True, blank=True)
     area = models.CharField(max_length=20, default=None, null=True, blank=True)
     city = models.CharField(max_length=20, default=None, null=True, blank=True)
-    state = models.CharField(max_length=20, default=None, null=True, blank=True)
+    #state = models.CharField(max_length=20, default=None, null=True, blank=True)
+    #state = models.ForeignKey(State, on_delete = models.CASCADE, null=True, blank = True)
     pin = models.CharField(max_length=20, default=None, null=True, blank=True)
 
     def __str__(self):
@@ -42,3 +43,10 @@ class Contact(models.Model):
 
     def __str__(self):
         return str(self.id) + " " + self.name
+
+
+class State(models.Model):
+    state = models.CharField(max_length=50)
+
+    def __str__(self):
+        return str(self.id) + " " + self.state
