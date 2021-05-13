@@ -344,19 +344,15 @@ form .signup-link a:hover{
     {% if not user.is_authenticated %}
 
       <div class="nav-items">
-        <li>
-          <a href="/signin/">Sign In</a>
-        </li>
+        <li><a href="/signin/">Sign In</a></li>
         <li><a href="/signup/">Sign Up</a> </li>
+        <li><a href="/contact/">Contact</a> </li>
       </div>
     {% else %}
       <div class="nav-items">
-        <li>
-          <a href="/profile/" >Profile</a>
-        </li>
-        <li>
-          <a href="/signout/" >Sign Out</a>
-        </li>
+        <li><a href="/profile/" >Profile</a></li>
+        <li><a href="/signout/" >Sign Out</a></li>
+        <li><a href="/contact/">Contact</a> </li>
       </div>
 
     {% endif %}
@@ -384,6 +380,10 @@ form .signup-link a:hover{
 
   <a href="/display/"><button class="button"><span>Resources</span></button></a>
  <a href="/display/"><button class="button"><span>Locations</span></button></a>
+  <br>
+  <br>
+  <a href=""><button class="button"><span>Donate</span></button></a>
+  <a href=""><button class="button"><span>Covid Info.</span></button></a>
 
 {% endblock %}
 </body>

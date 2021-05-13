@@ -30,7 +30,7 @@ def signUp(request):
         p.name=request.POST.get('name')
         p.uname=request.POST.get('uname')
         p.email=request.POST.get('email')
-        p.phone=request.POST.get('contact')
+        p.phone=request.POST.get('phone')
         p.area=request.POST.get('area')
         p.pin=request.POST.get('pin')
         p.city=request.POST.get('city')
@@ -39,7 +39,7 @@ def signUp(request):
         try:
             user = User.objects.create_user(username=p.uname, email=p.email, password=pword)
             p.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/signin/')
         except:
             messages.error(request, "Username already exists")
     return render(request, "signup.html", )
@@ -96,17 +96,18 @@ def addResource(request):
         return HttpResponseRedirect('/admin/')
     category = Category.objects.all()
     if(request.method=="POST"):
-        # try:
+        try:
             p = Provider.objects.get(uname=request.user)
             r =Resource()
             r.rname=request.POST.get('rname')
             r.avail=int(request.POST.get('avail'))
             r.category=Category.objects.get(name=request.POST.get('category'))
+            r.blood_group = request.POST.get('blood')
             r.provider = p
             r.save()
             return HttpResponseRedirect('/profile/')
-        # except:
-        #     return HttpResponseRedirect('/')
+        except:
+            return HttpResponseRedirect('/')
     return render(request,"addresource.html", {"Category": category})
 
 
@@ -123,6 +124,7 @@ def editResource(request,num):
             r.name = request.POST.get('rname')
             r.avail = request.POST.get('avail')
             r.category = Category.objects.get(name=request.POST.get('category'))
+            r.blood_group = request.POST.get('blood')
             r.provider = p
             r.save()
             return HttpResponseRedirect('/profile/')
@@ -138,7 +140,7 @@ def addCategory(request):
     if(request.method=="POST"):
         try:
             c = Category()
-            c.name = request.POST.get('cat');
+            c.name = request.POST.get('cat')
             c.save()
             return HttpResponseRedirect('/addresource/')
         except:
@@ -173,4 +175,15 @@ def display(request):
     r = Resource.objects.all()
     return render(request, "display.html", {"Resource": r})
 
+def contactDetails(request):
+    if(request.method=="POST"):
+        c=Contact()
+        c.name=request.POST.get('name')
+        c.email=request.POST.get('email')
+        c.subject=request.POST.get('subject')
+        c.msg=request.POST.get('message')
+        c.save()
+        messages.success(request,"Message Sent")
+        return HttpResponseRedirect('/contact/')
+    return render(request,"contact-us.html")
 
