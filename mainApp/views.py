@@ -9,22 +9,35 @@ from django.db.models import Q
 # Create your views here.
 
 def home(request):
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
+    res=0
+    loc=0
+
     if (request.method == "POST"):
         try:
             msg = request.POST.get('search')
             c = Category.objects.get(Q(name__icontains=msg))
-            r = Resource.objects.filter(Q(category_id=c.id))
-            return render(request, "search.html", {"Resources": r})
+            r1 = Resource.objects.filter(Q(category_id=c.id))
+            return render(request, "search.html", {"Resources": r1,"Res": r, "Locations": l, "R":res, "L":loc })
         except:
             messages.error(request, "Username already exists")
             return render(request, "search.html")
-    return render(request, "index.html")
+    return render(request, "index.html", {"Res": r, "Locations": l, "R":res, "L":loc})
 
 
 def resources(request):
-    return render(request, "display.html")
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
+    return render(request, "display.html" ,{"Res": r, "Locations": l, "R":res, "L":loc})
 
 def signUp(request):
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
     if(request.method=="POST"):
         p=Provider()
         p.name=request.POST.get('name')
@@ -43,10 +56,14 @@ def signUp(request):
             return HttpResponseRedirect('/signin/')
         except:
             messages.error(request, "Username already exists")
-    return render(request, "signup.html", )
+    return render(request, "signup.html", {"Res": r, "Locations": l, "R":res, "L":loc})
 
 
 def signIn(request):
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
     if (request.method == "POST"):
         try:
             uname = request.POST.get('uname')
@@ -59,7 +76,7 @@ def signIn(request):
                 return HttpResponseRedirect('/')
         except:
             messages.error(request, "Invalid Username or password")
-    return render(request, "login.html",)
+    return render(request, "login.html",{"Res": r, "Locations": l, "R":res, "L":loc})
 
 
 def signOut(request):
@@ -68,11 +85,15 @@ def signOut(request):
 
 
 def profile(request):
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
     user = User.objects.get(username=request.user)
     if (user.is_superuser):
         return HttpResponseRedirect('/admin/')
     else:
-        try:
+        # try:
             p =Provider.objects.get(uname=request.user)
             if (request.method == "POST"):
                 p.name = request.POST.get('name')
@@ -82,64 +103,79 @@ def profile(request):
                 p.area = request.POST.get('area')
                 p.city = request.POST.get('city')
                 p.pin = request.POST.get('pin')
-                p.state = request.POST.get('state')
+                # p.state = request.POST.get('state')
+
+                p.state = State.objects.get(state=request.POST.get('state'))
                 p.save()
                 return HttpResponseRedirect('/profile/')
-            return render(request, "profile.html", {"Provider":p})
-        except:
-            return render(request, "profile.html")
+            return render(request, "profile.html", {"Provider":p, "Res": r, "Locations": l, "R":res, "L":loc})
+        # except:
+        #     return render(request, "profile.html", {"Provider":p, "Res": r, "Locations": l, "R":res, "L":loc})
 
 
 # @login_required(login_url='/login/')
 def addResource(request):
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
     user = User.objects.get(username=request.user)
     if (user.is_superuser):
         return HttpResponseRedirect('/admin/')
     category = Category.objects.all()
     state = State.objects.all()
     if(request.method=="POST"):
-        try:
+        # try:
             p = Provider.objects.get(uname=request.user)
-            r =Resource()
-            r.rname=request.POST.get('rname')
-            r.avail=int(request.POST.get('avail'))
-            r.category=Category.objects.get(name=request.POST.get('category'))
-            r.state=State.objects.get(state=request.POST.get('state'))
-            r.blood_group = request.POST.get('blood')
-            r.provider = p
-            r.save()
+            r1 =Resource()
+            r1.rname=request.POST.get('rname')
+            r1.avail=int(request.POST.get('avail'))
+            r1.category=Category.objects.get(name=request.POST.get('category'))
+            # r1.state=State.objects.get(state=request.POST.get('state'))
+            r1.blood_group = request.POST.get('blood')
+            r1.provider = p
+            r1.save()
             return HttpResponseRedirect('/profile/')
-        except:
-            return HttpResponseRedirect('/')
-    return render(request,"addresource.html", {"Category": category, "State": state})
+        # except:
+        #     return HttpResponseRedirect('/')
+    return render(request,"addresource.html", {"Category": category, "State": state, "Res": r, "Locations": l, "R":res, "L":loc})
 
 
 # @login_required(login_url='/login/')
 def editResource(request,num):
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
     user = User.objects.get(username=request.user)
     if (user.is_superuser):
         return HttpResponseRedirect('/admin/')
     try:
-        r = Resource.objects.get(id=num)
+        r1 = Resource.objects.get(id=num)
         category=Category.objects.all()
         if(request.method =="POST"):
             p = Provider.objects.get(uname=request.user)
-            r.name = request.POST.get('rname')
-            r.avail = request.POST.get('avail')
-            r.category = Category.objects.get(name=request.POST.get('category'))
-            r.blood_group = request.POST.get('blood')
-            r.provider = p
-            r.save()
+            r1.name = request.POST.get('rname')
+            r1.avail = request.POST.get('avail')
+            r1.category = Category.objects.get(name=request.POST.get('category'))
+            r1.blood_group = request.POST.get('blood')
+            r1.provider = p
+            r1.save()
             return HttpResponseRedirect('/profile/')
         return render(request, "editresource.html", {
-                                                    "Resource": r,
-                                                     "Category":category})
+                                                    "Resource": r1,
+                                                     "Category":category, "Res": r, "Locations": l,
+        "R":res, "L":loc})
     except:
         return HttpResponseRedirect('/profile/')
 
 
 
 def addCategory(request):
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
     if(request.method=="POST"):
         try:
             c = Category()
@@ -148,19 +184,23 @@ def addCategory(request):
             return HttpResponseRedirect('/addresource/')
         except:
             return HttpResponseRedirect('/')
-    return render(request, "addCategory.html")
+    return render(request, "addCategory.html", {"Res": r, "Locations": l, "R":res, "L":loc})
 
 
 
 def resources(request):
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
     user = User.objects.get(username=request.user)
     if (user.is_superuser):
         return HttpResponseRedirect('/admin/')
     else:
         try:
             p = Provider.objects.get(uname = request.user)
-            r = Resource.objects.filter(provider = p)
-            return render(request, "resource.html", {"Resources":r})
+            r1 = Resource.objects.filter(provider = p)
+            return render(request, "resource.html", {"Resources":r1, "Res": r, "Locations": l, "R":res, "L":loc})
         except:
             return HttpResponseRedirect('/profile/')
 
@@ -169,23 +209,53 @@ def deleteResource(request, num):
     user = User.objects.get(username=request.user)
     if (user.is_superuser):
         return HttpResponseRedirect('/admin/')
-    r = Resource.objects.get(id = num)
-    r.delete()
+    r1 = Resource.objects.get(id = num)
+    r1.delete()
     return HttpResponseRedirect('/resources/')
 
 
 def display(request, res, loc ):
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
+
     if (res == 0 and loc == 0):
-        r = Resource.objects.all()
+        r1 = Resource.objects.all()
     elif( not res == 0 and  loc == 0):
-        r = Resource.objects.filter(category=res)
+        r1 = Resource.objects.filter(category=res)
+        try:
+            resource = Category.objects.get(id=res)
+            return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l, "R": res, "L": loc,
+                                                   "Rname": resource})
+        except:
+            return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l,
+                                                    "R": res, "L": loc, })
     elif( res == 0 and not loc == 0):
-        r = Resource.objects.filter(state=loc)
+        r1 = Resource.objects.filter(provider__state=loc)
+        try:
+            location = State.objects.get(id=loc)
+            return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l, "R": res, "L": loc,
+                                                    "Lname": location})
+        except:
+            return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l,
+                                                    "R": res, "L": loc, })
     else :
-        r = Resource.objects.filter(state=loc, category=res)
-    return render(request, "display.html", {"Resource": r})
+        r1 = Resource.objects.filter(provider__state=loc, category=res)
+        try:
+            resource = Category.objects.get(id=res)
+            location = State.objects.get(id=loc)
+            return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l, "R": res, "L": loc,
+                                                    "Rname": resource, "Lname": location})
+        except:
+            return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l,
+                                                    "R": res, "L": loc,})
+    return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l, "R": res, "L": loc,})
+
 
 def contactDetails(request):
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
     if(request.method=="POST"):
         c=Contact()
         c.name=request.POST.get('name')
@@ -195,16 +265,24 @@ def contactDetails(request):
         c.save()
         messages.success(request,"Message Sent")
         return HttpResponseRedirect('/contact/')
-    return render(request,"contact-us.html")
+    return render(request,"contact-us.html", {"Res": r, "Locations": l, "R":res, "L":loc})
 
 def optionsRes(request):
-    r = Category.objects.all()
-    return render(request, "optionsres.html", {"Options" :r})
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
+    r1 = Category.objects.order_by('name')
+    return render(request, "optionsres.html", {"Options" :r1, "Res": r, "Locations": l, "R":res, "L":loc})
 
 
 def optionsLoc(request):
-    r = State.objects.all()
-    return render(request, "optionsloc.html", {"Options" :r})
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
+    r1 = State.objects.order_by('state')
+    return render(request, "optionsloc.html", {"Options" :r1, "Res": r, "Locations": l, "R":res, "L":loc})
 
 
 def donate(request):
@@ -215,4 +293,7 @@ def covInfo(request):
 
 def cmFund(request):
     return render(request, "cmfund.html")
+
+def consult(request):
+    return render(request, "consult.html")
 

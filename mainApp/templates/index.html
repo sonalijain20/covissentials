@@ -60,12 +60,13 @@
         /* Styling all the nav items as a whole */
         nav .nav-items {
             display: flex;
-            flex: 1;
+            flex: -1;
             padding: 0 0 0 200px;
         }
 
         /* Styling the list items in the nav tag */
         nav .nav-items li {
+            display: inline-flex;
             list-style: none;
             padding: 0 10px;
         }
@@ -322,10 +323,10 @@ form .signup-link a:hover{
   padding: 20px;
 }
 .dropbtn {
-  background-color: #4CAF50;
+  background-color: #037729;
   color: white;
   padding: 16px;
-  margin-left: 100%;
+  margin-left: 125%;
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -495,9 +496,26 @@ tr {
     <div class="logo">
       <a href="/" class="logo">Covissentials</a>
     </div>
-    <div class="nav-items"></div>
-
-<!--     Defining the login button-->
+<!--    <div class="nav-items"></div>-->
+<div class="dropdown" style="float:left;">
+        <button class="dropbtn">Resources</button>
+          <div class="dropdown-content" style="left:0;">
+              <a href="/display/0/{{L}}/">Clear</a>
+          {% for i in Res %}
+              <a href="/display/{{i.id}}/{{L}}/">{{i.name}}</a>
+              {% endfor %}
+          </div>
+    </div>
+<div class="dropdown" style="float:left;">
+  <button class="dropbtn">Location</button>
+  <div class="dropdown-content" style="left:0;">
+      <a href="/display/{{R}}/0/">Clear</a>
+    {% for i in Locations %}
+      <a href="/display/{{R}}/{{i.id}}/">{{i.state}}</a>
+      {% endfor %}
+  </div>
+</div>
+      <!--     Defining the login button-->
 
     {% if not user.is_authenticated %}
 
@@ -505,15 +523,18 @@ tr {
         <li><a href="/signin/">Sign In</a></li>
         <li><a href="/signup/">Sign Up</a> </li>
         <li><a href="/contact/">Contact</a> </li>
+
       </div>
     {% else %}
       <div class="nav-items">
         <li><a href="/profile/" >Profile</a></li>
         <li><a href="/signout/" >SignOut</a></li>
         <li><a href="/contact/">Contact</a> </li>
+          <li><a href="">Resources</a></li>
       </div>
 
     {% endif %}
+
 
     <div class="searchbar">
       <form method="post" action="/">
@@ -530,14 +551,15 @@ tr {
 
   </nav>
   {% block body %}
-  <div class="main"><br>
+  <div class="main">
+      <br>
     <img src="{% static 'images/img2.jpg' %}" width="100%" height="400" alt="">
   </div>
     <br>
     <br>
 
-  <a href="/optionsres/"><button class="button"><span>Resources</span></button></a>
- <a href="/optionsloc/"><button class="button"><span>Locations</span></button></a>
+  <a href="/display/0/0/"><button class="button"><span>Resources</span></button></a>
+ <a href="/consult/"><button class="button"><span>Consultants</span></button></a>
   <br>
   <br>
   <a href="/donate/"><button class="button"><span>Donate</span></button></a>
@@ -547,5 +569,8 @@ tr {
   <br>
 
 {% endblock %}
+<div class="main">
+    <br><br>
+</div>
 </body>
 </html>

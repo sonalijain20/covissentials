@@ -21,10 +21,20 @@
         <label>City</label>
         <input type="text" value="{{Provider.city}}" name="city"><br>
         <label>State</label>
-        <input type="text" value="{{Provider.state}}" name="state"><br>
+<!--        <input type="text" value="{{Provider.state.state}}" name="state"><br>-->
+        <select name="state" >
+            <option selected name="{{Provider.state.state}}">{{Provider.state.state}}</option>
+			{% for i in Locations %}
+			<option value="{{i.state}}">{{i.state}}</option>
+			{% endfor %}
+		</select>
         <div class="field">
             <input type="submit" value="Update">
         </div>
+
+
+
+
         <div class="signup-link">
             <a href="/addresource/"> Add Resource</a><br>
 <!--            <a href="/editresource/{{Provider.id}}"> Edit Resource</a>-->

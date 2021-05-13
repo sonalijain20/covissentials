@@ -15,7 +15,6 @@ class Provider(models.Model):
     phone = models.CharField(max_length=20, default=None, null=True, blank=True)
     area = models.CharField(max_length=20, default=None, null=True, blank=True)
     city = models.CharField(max_length=20, default=None, null=True, blank=True)
-    #state = models.CharField(max_length=20, default=None, null=True, blank=True)
     state = models.ForeignKey(State, on_delete = models.CASCADE, null=True, blank = True)
     pin = models.CharField(max_length=20, default=None, null=True, blank=True)
 
@@ -36,7 +35,7 @@ class Resource(models.Model):
     avail=models.IntegerField(default=0,null=True,blank=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     blood_group = models.CharField(max_length=20, null=True, blank=True, default=None)
-    state = models.ForeignKey(State, on_delete=models.CASCADE, null=True, blank=True)
+    # state = models.ForeignKey(State, on_delete=models.CASCADE, null=True, blank=True)
 
 
     def __str__(self):

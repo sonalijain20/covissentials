@@ -2,9 +2,6 @@
 {% load static %}
 {% block body %}
 		<div class="wrapper">
-					<div class="title"><!--sign up form-->
-						<h2>Edit Resources</h2>
-					</div>
 						<form  method="post" enctype="multipart/form-data">
 						    {% csrf_token %}
 							<div class="field">
@@ -14,10 +11,11 @@
 							<div class="field">
 							<input type="number"  min="0" name="avail" value="{{Resource.avail}}"/>
                             <label>Availibility</label>
-							</div>
-                            <div class="field">
+							</div><br>
+                            <div >
 								<label>Category</label>
-								<select name="category" class="form-select" >
+								<select name="category">
+									<option selected name="{{Resource.category.name}}">{{Resource.category.name}}</option>
                                {% for i in Category %}
                                <option value="{{i.name}}">{{i.name}}</option>
                                 {% endfor %}
