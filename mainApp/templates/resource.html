@@ -1,11 +1,12 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block body %}
-<div class="wrapper">
+<div class="wrapper2">
     {% if not Resources %}
         <h3 >You have no resources</h3>
     {% else %}
-    <table border="2">
+    <div class="table">
+        <table>
         <div class="field">
             <tr>
             <th>Resource Name</th>
@@ -25,6 +26,8 @@
         </div>
         {% endfor %}
     </table>
+    </div>
+
     {% endif %}
 </div>
 {% endblock %}

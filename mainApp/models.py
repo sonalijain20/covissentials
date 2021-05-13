@@ -32,7 +32,7 @@ class Category(models.Model):
 class Resource(models.Model):
     rname = models.CharField(max_length=50)
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
-    avail=models.IntegerField(default=0,null=True,blank=True)
+    avail=models.IntegerField(default=None,null=True,blank=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     blood_group = models.CharField(max_length=20, null=True, blank=True, default=None)
     # state = models.ForeignKey(State, on_delete=models.CASCADE, null=True, blank=True)
