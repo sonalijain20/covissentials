@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+		<div class="wrapper">
+					<div class="title">
+						<h3>Contact Us</h3>
+					</div>
+						{% for i in messages %}
+		 					{{i}}
+						{% endfor %}
+				    	<form name="contact-form" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+				            <div class="field">
+				                <input type="text" name="name" required="required">
+								<label>Name</label>
+				            </div>
+				            <div class="field">
+				                <input type="email" name="email" required="required">
+								<label>Email</label>
+				            </div>
+				            <div class="field">
+				                <input type="text" name="subject"  required="required">
+								<label>Subject</label>
+				            </div>
+				            <div class="field">
+				                <input name="message" id="message" required="required"  cols="12">
+								<label>Feedback</label>
+				            </div>
+				            <div class="field">
+				                <input type="submit" name="submit" value="Submit">
+				            </div>
+				        </form>
+
+
+	    		<div class="col-sm-4">
+	    			<div>
+	    				<h4 >Contact Info</h4>
+	    				<address>
+<!--	    					<p>E-Shopper Inc.</p>-->
+<!--							<p>935 W. Webster Ave New Streets Chicago, IL 60614, NY</p>-->
+<!--							<p>Newyork USA</p>-->
+<!--							<p>Mobile: +2346 17 38 93</p>-->
+<!--							<p>Fax: 1-714-252-0026</p>-->
+							<p>Email: covissentials@gmail.com</p>
+	    				</address>
+	    			</div>
+    			</div>
+    </div><!--/#contact-page-->
+
+{% endblock %}

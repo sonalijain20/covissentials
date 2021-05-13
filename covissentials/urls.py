@@ -30,5 +30,6 @@ urlpatterns = [
     path('addcategory/',views.addCategory),
     path('display/', views.display),
     path('delete/<int:num>/', views.deleteResource),
+    path('contact/', views.contactDetails),
 
 ]

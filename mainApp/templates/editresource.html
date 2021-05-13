@@ -1,30 +1,37 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block body %}
-<section id="form"><!--form-->
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="signup-form"><!--sign up form-->
+		<div class="wrapper">
+					<div class="title"><!--sign up form-->
 						<h2>Edit Resources</h2>
+					</div>
 						<form  method="post" enctype="multipart/form-data">
 						    {% csrf_token %}
-							<label>Resource Name</label>
+							<div class="field">
 							<input type="text"  name="rname" value="{{Resource.rname}}"/>
-                            <label>Availibility</label>
+							<label>Resource Name</label>
+							</div>
+							<div class="field">
 							<input type="number"  name="avail" value="{{Resource.avail}}"/>
-                            <label>Category</label>
-                            <select name="category" class="form-select" >
+                            <label>Availibility</label>
+							</div>
+                            <div class="field">
+								<label>Category</label>
+								<select name="category" class="form-select" >
                                {% for i in Category %}
                                <option value="{{i.name}}">{{i.name}}</option>
                                 {% endfor %}
-                           </select>
-                            <button type="submit" >Edit Resource</button>
+								</select>
+							</div>
+							<div class="field">
+							<input type="text"  name="blood" value="{{Resource.blood_group}}"/>
+							<label>Blood Group</label>
+							</div>
+							<div class="field">
+<!--								<button type="submit" >Edit Resource</button>-->
+								<input type="submit" value="Edit">
+							</div>
 						</form>
-					</div><!--/sign up form-->
-				</div>
-			</div>
 		</div>
-	</section><!--/form-->
 
 {% endblock %}
