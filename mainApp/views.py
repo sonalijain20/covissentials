@@ -93,7 +93,7 @@ def profile(request):
     if (user.is_superuser):
         return HttpResponseRedirect('/admin/')
     else:
-        try:
+        # try:
             p =Provider.objects.get(uname=request.user)
             if (request.method == "POST"):
                 p.name = request.POST.get('name')
@@ -103,12 +103,14 @@ def profile(request):
                 p.area = request.POST.get('area')
                 p.city = request.POST.get('city')
                 p.pin = request.POST.get('pin')
-                p.state = request.POST.get('state')
+                # p.state = request.POST.get('state')
+
+                p.state = State.objects.get(state=request.POST.get('state'))
                 p.save()
                 return HttpResponseRedirect('/profile/')
             return render(request, "profile.html", {"Provider":p, "Res": r, "Locations": l, "R":res, "L":loc})
-        except:
-            return render(request, "profile.html", {"Res": r, "Locations": l, "R":res, "L":loc})
+        # except:
+        #     return render(request, "profile.html", {"Provider":p, "Res": r, "Locations": l, "R":res, "L":loc})
 
 
 # @login_required(login_url='/login/')
@@ -123,19 +125,19 @@ def addResource(request):
     category = Category.objects.all()
     state = State.objects.all()
     if(request.method=="POST"):
-        try:
+        # try:
             p = Provider.objects.get(uname=request.user)
             r1 =Resource()
             r1.rname=request.POST.get('rname')
             r1.avail=int(request.POST.get('avail'))
             r1.category=Category.objects.get(name=request.POST.get('category'))
-            r1.state=State.objects.get(state=request.POST.get('state'))
+            # r1.state=State.objects.get(state=request.POST.get('state'))
             r1.blood_group = request.POST.get('blood')
             r1.provider = p
             r1.save()
             return HttpResponseRedirect('/profile/')
-        except:
-            return HttpResponseRedirect('/')
+        # except:
+        #     return HttpResponseRedirect('/')
     return render(request,"addresource.html", {"Category": category, "State": state, "Res": r, "Locations": l, "R":res, "L":loc})
 
 
@@ -220,19 +222,33 @@ def display(request, res, loc ):
         r1 = Resource.objects.all()
     elif( not res == 0 and  loc == 0):
         r1 = Resource.objects.filter(category=res)
+        try:
+            resource = Category.objects.get(id=res)
+            return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l, "R": res, "L": loc,
+                                                   "Rname": resource})
+        except:
+            return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l,
+                                                    "R": res, "L": loc, })
     elif( res == 0 and not loc == 0):
-        r1 = Resource.objects.filter(state=loc)
+        r1 = Resource.objects.filter(provider__state=loc)
+        try:
+            location = State.objects.get(id=loc)
+            return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l, "R": res, "L": loc,
+                                                    "Lname": location})
+        except:
+            return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l,
+                                                    "R": res, "L": loc, })
     else :
-        r1 = Resource.objects.filter(state=loc, category=res)
-        # try:
-        #     resource = Category.objects.get(id=res)
-        #     location = State.objects.get(id=loc)
-        #     return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l, "R": res, "L": loc,
-        #                                             "Rname": resource, "Lname": location})
-        # except:
-        #     return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l,
-        #                                             "R": res, "L": loc,})
-    return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l, "R": res, "L": loc, })
+        r1 = Resource.objects.filter(provider__state=loc, category=res)
+        try:
+            resource = Category.objects.get(id=res)
+            location = State.objects.get(id=loc)
+            return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l, "R": res, "L": loc,
+                                                    "Rname": resource, "Lname": location})
+        except:
+            return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l,
+                                                    "R": res, "L": loc,})
+    return render(request, "display.html", {"Resource": r1, "Res": r, "Locations": l, "R": res, "L": loc,})
 
 
 def contactDetails(request):
