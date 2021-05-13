@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<div class="wrapper">
+    <div class="field">
+        <div class="dropdown" style="float:left;" align="center">
+          <button class="dropbtn">Locations</button>
+          <div class="dropdown-content" style="left:0;">
+              {% for i in Options %}
+              <a href="/display/0/{{i.id}}">{{i.state}}</a>
+              {% endfor %}
+          </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
