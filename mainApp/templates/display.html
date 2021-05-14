@@ -9,7 +9,7 @@
 {% else %}
 <br><br>
         {% if Rname and Lname %}
-        <h3 align="center">Displaying {{Rname.name}} in {{Lname.state}} </h3>
+        <h3 align="center">Displaying {{Rname.name}} available in {{Lname.state}} </h3>
         {% elif not Rname and Lname %}
         <h3 align="center">Displaying Resources available in {{Lname.state}} </h3>
         {% elif not Lname and Rname %}
@@ -23,22 +23,13 @@
                    <h3>{{i.rname}}</h3>
                     <h5>Provided by: {{i.provider.name}}</h5>
                     <h6>{{i.provider.area}}</h6>
-                    <h6>{{i.provider.state.state}}</h6>
+                    <h6>{{i.provider.city}}, {{i.provider.state.state}} - {{i.provider.pin}}</h6>
                     <h6> Availability: {{i.avail}}</h6>
-                    <h4>{{i.provider.phone}}</h4>
-
+                    <h4><i class="fa fa-phone" aria-hidden="true"></i> {{i.provider.phone}}</h4>
         </div>
         </div>
-
-
-
         {% endfor %}
-
-
 {% endif %}
-
-
-
 {% endblock %}
 
 

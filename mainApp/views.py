@@ -135,7 +135,7 @@ def addResource(request):
             r1.blood_group = request.POST.get('blood')
             r1.provider = p
             r1.save()
-            return HttpResponseRedirect('/profile/')
+            return HttpResponseRedirect('/resources/')
         except:
             return HttpResponseRedirect('/')
     return render(request,"addresource.html", {"Category": category, "State": state, "Res": r, "Locations": l, "R":res, "L":loc})
@@ -286,14 +286,30 @@ def optionsLoc(request):
 
 
 def donate(request):
-    return render(request, "donate.html")
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
+    return render(request, "donate.html", {"Res": r, "Locations": l, "R":res, "L":loc})
 
 def covInfo(request):
-    return render(request, "covinfo.html")
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
+    return render(request, "covinfo.html", {"Res": r, "Locations": l, "R":res, "L":loc})
 
 def cmFund(request):
-    return render(request, "cmfund.html")
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
+    return render(request, "cmfund.html", {"Res": r, "Locations": l, "R":res, "L":loc})
 
 def consult(request):
-    return render(request, "consult.html")
+    res = 0
+    loc = 0
+    r = Category.objects.order_by('name')
+    l = State.objects.order_by('state')
+    return render(request, "consult.html", {"Res": r, "Locations": l, "R":res, "L":loc})
 

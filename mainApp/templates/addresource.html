@@ -17,6 +17,7 @@
 		</div>
 		<br><label>Category</label>
 		<select name="category" class="form-select" >
+<!--			<option></option>-->
 			{% for i in Category %}
 			<option value="{{i.name}}">{{i.name}}</option>
 			{% endfor %}
@@ -32,7 +33,7 @@
 
 		</div>
 		<div class="field">
-			<input type="text" name="blood">
+			<input type="text" name="blood" value="None">
 			<label>Blood Group</label>
 		</div>
 		<div class="field">
