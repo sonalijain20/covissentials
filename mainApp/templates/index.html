@@ -55,6 +55,7 @@
             font-size: 30px;
             font-weight: 600;
             letter-spacing: -1px;
+            text-decoration: none;
         }
 
         /* Styling all the nav items as a whole */
@@ -196,11 +197,15 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 380px;
+  width: 400px;
   background: #fff;
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
 }
+.alignment{
+    width: 120px;
+    display: inline-block;
+   }
 .wrapper2{
   position: absolute;
   top: 50%;
@@ -360,18 +365,18 @@ form .signup-link a:hover{
   background-color: #037729;
   color: white;
   padding: 16px;
-  margin-left: 125%;
   font-size: 15px;
+  margin-left: 125%;
   font-weight: 500;
   border: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .dropdown {
   position: relative;
   display: inline-block;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -398,9 +403,10 @@ form .signup-link a:hover{
   display: block;
 }
 
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
-}
+<!--.dropdown:hover .dropbtn {-->
+<!--&lt;!&ndash;  background-color: #3e8e41;&ndash;&gt;-->
+<!--color: #19191b;-->
+<!--}-->
 .donationCard {
     border-radius: 20px;
     cursor: pointer;
@@ -540,6 +546,7 @@ tr {
     <div class="logo">
       <a href="/" class="logo">Covissentials</a>
     </div>
+
     <div class="dropdown" style="float:left;">
             <button class="dropbtn">Resources</button>
               <div class="dropdown-content" style="left:0;">
@@ -548,7 +555,7 @@ tr {
                   <a href="/display/{{i.id}}/{{L}}/">{{i.name}}</a>
                   {% endfor %}
               </div>
-        </div>
+    </div>
     <div class="dropdown" style="float:left;">
       <button class="dropbtn">Location</button>
       <div class="dropdown-content" style="left:0;">
@@ -558,6 +565,7 @@ tr {
           {% endfor %}
       </div>
     </div>
+
       <!--     Defining the login button-->
     {% if not user.is_authenticated %}
       <div class="nav-items">
@@ -570,19 +578,15 @@ tr {
         <li><a href="/profile/" >Profile</a></li>
         <li><a href="/signout/" >SignOut</a></li>
         <li><a href="/contact/">Contact</a> </li>
-
       </div>
-
     {% endif %}
-
-
     <div class="searchbar">
       <form method="post" action="/">
         {% csrf_token %}
         <input type="text" placeholder="Search Resources" name="search" required="">
         <div class="icon">
           <button type="submit">
-            <i class="fas fa-search"></i>
+            <i class="fa fa-search"></i>
           </button>
         </div>
       </form>

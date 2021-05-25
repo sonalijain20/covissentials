@@ -4,9 +4,13 @@
 <div class="wrapper">
     <form method="post">
         {% csrf_token %}
-        <label>Category name</label>
-        <input type="text" name="cat" required>
-        <button type="submit">Add</button>
+        <div class="field">
+            <label>Category name</label>
+            <input type="text" name="cat" required>
+        </div>
+        <div class="field">
+			<input type="submit" value="Add">
+		</div>
     </form>
 
 
